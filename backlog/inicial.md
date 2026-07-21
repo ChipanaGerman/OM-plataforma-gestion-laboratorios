@@ -77,6 +77,10 @@
 
 ## Priorización MoSCoW
 
+> **Observación (MoSCoW):**
+> - **Inconsistencia:** Falta la categoría **Won't Have** (o *Out of Scope*). Es vital definir explícitamente qué requerimientos no se incluirán en esta primera fase para evitar un alcance desmedido (*scope creep*).
+> - **Priorización:** La Épica 4 (Gestión básica de Hardware) está en **Must Have**. Si el núcleo de la fase 1 es la plataforma de contenedores y los usuarios, la gestión de hardware físico podría ser un **Should Have** para acelerar la entrega del MVP.
+
 **Must Have (Fase 1 - Universitario):**
 - Épica 1 (Organización y Procesos)
 - Épica 2 (Usuarios y Permisos)
