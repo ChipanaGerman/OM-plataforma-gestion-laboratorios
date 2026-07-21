@@ -39,3 +39,7 @@ El objetivo es estandarizar el funcionamiento del laboratorio, reducir tiempos i
 Start → [Solicitud de Recursos] → ¿Recursos disponibles? 
    → Sí → [Asignación Temporal] → [Registro en Sistema] → End
    → No → [Notificación de Espera] → [Cola de Espera] → Revisar disponibilidad
+```
+---
+* **Implementación:** <span style="color:red">Automatizado mediante un sistema de validación en tiempo real para agilizar la asignación física de componentes y evitar la superposición de solicitudes.</span>
+* **Mejora posible:** Implementar un tiempo máximo de caducidad en la "Cola de Espera" para depurar solicitudes abandonadas automáticamente.
