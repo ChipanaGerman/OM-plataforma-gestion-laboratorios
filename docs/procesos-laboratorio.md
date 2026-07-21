@@ -33,6 +33,10 @@ Se recomienda un **Chapter de Organización y Procesos** (transversal) en lugar 
 
 **Justificación**: Permite mantener los squads enfocados en desarrollo mientras se garantiza que los procesos sean prácticos y bien documentados.
 
+> `feat(org): definir estructura de roles y Chapter de Procesos`
+> * **Implementación:** <span style="color:red">Implementado mediante un modelo híbrido (Chapter transversal y Squads técnicos) para asegurar que los desarrolladores mantengan el foco técnico sin descuidar la gobernanza y documentación de procesos.</span>
+> * **Mejora posible:** Evaluar la rotación semestral del rol "Process Owner" dentro de los squads para democratizar el conocimiento.
+
 ---
 
 ## 3. Procesos Principales (con Descripción Detallada)
@@ -55,6 +59,10 @@ Start → Solicitud por Portal → Verificación Automática de Disponibilidad
 2. El sistema verifica disponibilidad en tiempo real.
 3. Se registra el préstamo con fecha/hora de devolución.
 4. Al llegar al laboratorio se realiza Check-in.
+
+> `feat(hardware): integrar flujo de solicitud y check-in QR`
+> * **Implementación:** <span style="color:red">Automatizado mediante validación de disponibilidad en tiempo real y validación por código QR para reducir la fricción del usuario, evitar reservas fantasma y controlar el inventario físico.</span>
+> * **Mejora posible:** Implementar penalizaciones automáticas o liberación temprana por *no-show* (ausencia tras 15 minutos).
 
 ---
 
@@ -84,6 +92,10 @@ Start → Solicitud de Imagen (Estudiante/Docente)
 - Los estudiantes pueden descargar la imagen oficial y ejecutarla en su computadora personal con Docker o Podman.
 - Se mantiene un historial completo de versiones.
 
+> `feat(images): implementar catálogo seguro en Harbor`
+> * **Implementación:** <span style="color:red">Centralizado utilizando Harbor como registro, integrando escaneo de vulnerabilidades y firmas digitales de manera obligatoria para garantizar un entorno de desarrollo seguro, estandarizado y libre de malware.</span>
+> * **Mejora posible:** Añadir un sistema de *Garbage Collection* automático para purgar imágenes no utilizadas en los últimos 6 meses.
+
 ---
 
 ### 3.3 Proceso: Actualización y Mantenimiento de Imágenes
@@ -98,9 +110,11 @@ Start → Detección Automática de Nueva Versión
    → No → Actualización Automática
 → Publicación → Notificación a Usuarios Activos → End
 
-
-
 ---
+
+> `feat(ci-cd): automatizar pipeline de rebuild de imágenes`
+> * **Implementación:** <span style="color:red">Configurado a través de un flujo CI/CD que detecta nuevas versiones y lanza un rebuild automático, minimizando la intervención manual y priorizando la entrega continua de entornos actualizados.</span>
+> * **Mejora posible:** Incorporar un mecanismo de *rollback* automático si la nueva imagen presenta fallas críticas en los tests de salud.
 
 ### 3.4 Proceso: Reserva y Uso de Laboratorio
 
@@ -111,7 +125,9 @@ Start → Login → Seleccionar Horario y Equipo
 → Reserva Confirmada → Recordatorio 15 min antes
 → Check-in en Laboratorio → Uso → Check-out → Liberación Automática
 
-
+> `feat(booking): añadir módulo de reservas y liberación de equipos`
+> * **Implementación:** <span style="color:red">Desarrollado como un sistema de auto-reserva con liberación automática tras el check-out, diseñado para maximizar la tasa de ocupación y evitar tiempos muertos de las computadoras.</span>
+> * **Mejora posible:** Integrar notificaciones push multiplataforma (ej. Telegram o WhatsApp) para los recordatorios de reserva.
 
 ---
 
@@ -137,6 +153,10 @@ Start → Login → Seleccionar Horario y Equipo
 - Nivel de satisfacción de usuarios (Encuesta): **≥ 85%**
 - Tiempo promedio de reserva de equipo: **≤ 5 minutos**
 
+> Gobernanza y KPIs:** `docs(gobernanza): establecer Matriz RACI y métricas de desempeño`
+> * **Implementación:** <span style="color:red">Definidos e integrados estáticamente en la documentación para delimitar responsabilidades exactas por actor y establecer una línea base que permita auditar los SLAs del laboratorio.</span>
+> * **Mejora posible:** Migrar la recolección de KPIs a un *dashboard* interactivo (ej. Grafana) conectado directamente a los logs del sistema.
+
 ---
 
 ## 6. Mejora Continua y Recomendaciones
@@ -161,3 +181,7 @@ Está diseñado para ser entregado como **trabajo de curso de Organización y M�
 
 ¿Deseas que agregue más procesos (ej. Gestión de Incidentes, Onboarding de Nuevos Usuarios, Cierre de Semestre, etc.) o que prepare una versión con PlantUML para generar diagramas reales?
 
+---
+### Resumen General de Trazabilidad y Mejoras
+
+La arquitectura de procesos documentada establece una base sólida y escalable para la gestión del laboratorio. **Las implementaciones** destacan por su enfoque en la seguridad (escaneo de imágenes) y la automatización (validaciones en tiempo real). **La cuestión principal** a vigilar es el balance entre las aprobaciones manuales (cuellos de botella potenciales) y los procesos automatizados, especialmente en la creación de nuevas imágenes. **Las mejoras propuestas** apuntan hacia una mayor autonomía del sistema: integrando telemetría en tiempo real (dashboards), políticas de limpieza de recursos (*garbage collection*) y alertas proactivas (ausencias y notificaciones móviles), cerrando así el ciclo para un laboratorio 100% eficiente y autogestionado.
