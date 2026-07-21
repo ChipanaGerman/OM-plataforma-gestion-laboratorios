@@ -8,6 +8,11 @@
 
 ## Épicas Principales
 
+> **Observación (Épicas):**
+> - **Consistencia:** Solo la Épica 1 tiene formato completo (Descripción, Historias de Usuario, Criterios de Aceptación). Las Épicas 2 a 6 solo listan tareas y requieren mayor detalle.
+> - **Ambigüedad:** La Épica 5 ("Frontend y Portal de Usuario") es muy genérica. Faltan detalles sobre qué flujos y vistas son prioritarios.
+> - **Alineación:** La Épica 6 agrupa infraestructura base (Proxmox/K8s) con herramientas de CI/CD (GitLab/Harbor). Considerar separarlas para una mejor gestión técnica.
+
 ### Épica 1: Gestión Organizacional y Procesos del Laboratorio
 **Prioridad:** Alta (Fundacional)  
 **Descripción:** Definir, documentar e implementar la organización mínima requerida para el uso efectivo de la plataforma, incluyendo roles, procesos y flujos de trabajo.
