@@ -137,6 +137,13 @@
 
 ## Próximos Pasos
 
+> **Observación (Próximos Pasos):**
+> - **Accionabilidad:** Los pasos son generales. Falta asignar responsables (owners) y fechas límite (deadlines) para que sean completamente medibles.
+> - **Mejoras Sugeridas:**
+>   - En el paso 1: Especificar *quién* debe aprobar (ej. Comité Directivo o Product Owner).
+>   - En el paso 2: Definir el mecanismo de selección para los estudiantes del Chapter.
+>   - En el paso 4: Aclarar si el *DoD* abarcará también los requisitos de documentación de procesos o solo la parte técnica del software.
+
 1. Aprobar estructura organizacional propuesta.
 2. Formar el Chapter de Organización.
 3. Iniciar refinamiento del Backlog con los squads.
