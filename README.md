@@ -31,6 +31,8 @@ Este proyecto propone el desarrollo de una **Plataforma Híbrida** para la gesti
 
 La solución combina gestión de hardware (computadoras, servidores, impresoras), usuarios, proyectos/cursos, repositorios de código (GitLab) y un catálogo centralizado de imágenes de contenedores (Docker), garantizando **estandarización, trazabilidad y reproducibilidad** de entornos.
 
+> 🔴 **Comentario (Santiago):** El concepto de "Plataforma Híbrida" (local + nube) se introduce de manera muy vaga. No se establece la línea de demarcación técnica: qué operaciones/servicios deben ejecutarse localmente por razones de latencia y acceso directo al hardware (como Proxmox o laboratorios físicos) y qué componentes se gestionarán en la nube. Además, el alcance de la "gestión integral" es confuso: ¿el sistema administrará inventario físico (hardware físico real, mantenimiento de máquinas) o solo aprovisionamiento lógico a través de virtualización y contenedores?
+
 ---
 
 ## Problemática Común
@@ -44,7 +46,11 @@ Los laboratorios universitarios y las empresas de software enfrentan problemas s
 - Dificultad para replicar entornos entre laboratorio y computadoras personales de estudiantes/desarrolladores.
 - Escalabilidad limitada al pasar de academia a industria.
 
+> 🔴 **Comentario (Santiago):** Existe una generalización excesiva al agrupar bajo la misma problemática a la universidad y a la industria. Sus motivaciones y dolores reales son sustancialmente distintos. En la academia, el dolor principal es la pérdida de horas académicas en configuraciones iniciales por parte de alumnos inexpertos. En la industria, el dolor no es "instalar herramientas manualmente" (que ya está solucionado con automatización y scripts), sino la disparidad de entornos entre desarrollo/staging/producción, los costos elevados de infraestructura en la nube, y el estricto cumplimiento de políticas de seguridad y licencias corporativas. El texto debe separar claramente estas dos realidades.
+
 **En el ámbito universitario** se busca especialmente que los alumnos **no pierdan tiempo** en instalaciones y que puedan llevarse las mismas imágenes oficiales a sus computadoras personales para practicar fuera del laboratorio.
+
+> 🔴 **Comentario (Santiago):** Se menciona que la falta de trazabilidad de las imágenes es un problema común, pero en el contexto académico tradicional esto rara vez es un problema de primer orden (los profesores suelen evaluar la funcionalidad, no el origen legal o la compilación exacta de la imagen). En cambio, para una empresa, la trazabilidad, generación de SBOM y escaneo de vulnerabilidades son requisitos legales y de cumplimiento obligatorios. Nuevamente, se asumen necesidades industriales en un entorno educativo que no necesariamente las requiere, sobrecargando el alcance del proyecto académico sin justificación clara.
 
 ---
 
@@ -53,13 +59,26 @@ Los laboratorios universitarios y las empresas de software enfrentan problemas s
 ### Objetivo General
 Desarrollar una plataforma híbrida (local + nube) que permita la gestión estandarizada, segura y trazable de laboratorios de computación en contextos académicos y empresariales.
 
+> 🔴 **Comentario (Santiago):** El objetivo general no cumple con los criterios SMART. Conceptos como "gestión estandarizada, segura y trazable" son altamente subjetivos y no definen una métrica de éxito clara. ¿Cómo mediremos la seguridad o la estandarización? Debería definirse un porcentaje de reducción de tiempo de aprovisionamiento, o número de entornos replicados sin fallos, para que sea cuantitativamente medible.
+
 ### Objetivos Específicos
 - Implementar catálogo centralizado de imágenes de contenedores con procesos automatizados.
+
+> 🔴 **Comentario (Santiago):** "Procesos automatizados" es ambiguo. ¿Se refiere al proceso de build (CI/CD), al escaneo de seguridad (Trivy), a la firma de imágenes, o a su despliegue? Es necesario explicitar el alcance de la automatización para guiar adecuadamente el desarrollo técnico.
+
 - Gestionar usuarios, proyectos/cursos y recursos físicos de forma eficiente.
+
+> 🔴 **Comentario (Santiago):** La mención de "recursos físicos" entra en contradicción con la arquitectura técnica propuesta y el backlog. En ninguna parte de la arquitectura (que usa Kubernetes, Harbor, Keycloak, etc.) o en el backlog se detalla un sistema de inventario de hardware o monitoreo físico. Si no se va a implementar un control real sobre el ciclo de vida del hardware físico, este objetivo representa un "scope creep" (corrupción del alcance) y debe eliminarse.
+
 - Garantizar trazabilidad completa del software utilizado.
 - Permitir a los estudiantes descargar y ejecutar localmente las imágenes del laboratorio.
 - Crear dos versiones: Académica y Empresarial (con estándares superiores).
+
+> 🔴 **Comentario (Santiago):** ¿Qué define técnicamente a los "estándares superiores" de la versión empresarial? ¿Alta disponibilidad (HA), soporte multi-tenant real, auditorías de seguridad, o cumplimiento de normativas como ISO/IEC 27001? El término es puramente comercial y carece de valor técnico si no se definen las características funcionales y no funcionales que diferencian ambas versiones.
+
 - Formar estudiantes bajo metodologías ágiles reales (Modelo Spotify).
+
+> 🔴 **Comentario (Santiago):** Este es un objetivo pedagógico del proceso de desarrollo/curso, no un objetivo de la plataforma de software en sí. El software no "forma estudiantes", lo hace la metodología de trabajo del equipo. Mezclar objetivos del producto de software con objetivos del proceso educativo de los desarrolladores es conceptualmente erróneo en un documento de requerimientos técnicos de la plataforma.
 
 ---
 
@@ -71,10 +90,14 @@ Desarrollar una plataforma híbrida (local + nube) que permita la gestión estan
 - Mayor calidad de proyectos y prácticas.
 - Trazabilidad académica.
 
+> 🔴 **Comentario (Santiago):** Falta una línea base o estimación de impacto. ¿Cuánto tiempo se ahorra realmente? Por ejemplo, estimar que el tiempo de configuración del entorno por alumno se reducirá de 2 horas a 10 minutos aportaría una justificación de negocio sólida y no solo una declaración cualitativa de intenciones.
+
 **Beneficios Empresariales:**
 - Plataforma lista para entornos productivos.
 - Estudiantes formados con estándares profesionales.
 - Reducción de riesgos operativos.
+
+> 🔴 **Comentario (Santiago):** ¿Por qué una empresa de software querría adoptar una "plataforma de gestión de laboratorios"? En el entorno corporativo ya existen soluciones estándar muy robustas y maduras (como entornos de desarrollo en la nube administrados, plantillas Gitpod/Codespaces, o directamente infraestructuras internas de DevOps). La justificación falla en argumentar la propuesta de valor diferencial para la industria. Además, "plataforma lista para entornos productivos" es contradictorio con un proyecto que se define como "académico-empresarial" de propuesta inicial, sin garantías de nivel de servicio (SLA) ni planes de mantenimiento a largo plazo.
 
 ---
 
@@ -218,3 +241,6 @@ Esta plataforma representa una oportunidad estratégica para modernizar los labo
 ---
 
 *Documento preparado para repositorio GitHub. Puedes copiar todo este contenido directamente en un archivo `README.md`.*
+
+---
+> 🔴 **Comentario general (Santiago):** El documento tiene un buen propósito conceptual para guiar el inicio del proyecto, pero sufre de una preocupante vaguedad en la definición de su alcance técnico y de negocio. Al intentar abarcar tanto el mundo académico como el empresarial de manera indiferenciada, plantea objetivos contradictorios (como la gestión de recursos físicos que no está respaldada por la arquitectura) y carece de métricas claras para validar si la plataforma realmente aporta valor. Es fundamental reestructurar la introducción, delimitar qué es la plataforma híbrida, definir objetivos cuantitativos medibles (SMART) y justificar técnicamente el valor de cara a una empresa de software real.
