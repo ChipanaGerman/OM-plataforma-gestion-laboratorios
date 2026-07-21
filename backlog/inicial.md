@@ -99,6 +99,11 @@
 
 ## Pregunta Estratégica: ¿Cómo estructurar la "Organización y Procesos"?
 
+> **Observación (Organización vs Squad):**
+> - **Justificación:** La decisión híbrida está bien sustentada para evitar silos operativos. Sin embargo, no se menciona cómo se mitigará el *overhead* de comunicación entre el Chapter y los Squads técnicos.
+> - **Observación Técnica:** Dado que la plataforma usa K8s, Harbor y Proxmox, los *Process Owners* en los Squads necesitarán sólidos conocimientos en DevOps/SRE para que los procesos diseñados (ej. pipeline de escaneo de imágenes) sean viables técnicamente.
+> - **Alineación:** Falta documentar cómo se resolverán los conflictos de prioridad entre los objetivos técnicos del Squad y las tareas de proceso del Chapter.
+
 ### Propuesta Recomendada
 
 **Opción Elegida: Chapter de Organización + Rol Dedicado en Squads**
