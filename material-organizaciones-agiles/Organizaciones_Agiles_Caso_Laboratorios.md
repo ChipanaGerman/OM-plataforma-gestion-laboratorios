@@ -31,6 +31,8 @@ El marco Cynefin, desarrollado por Dave Snowden, clasifica los problemas en cuat
 
 > **Idea central:** los problemas complejos no se resuelven con más planificación anticipada, sino con estructuras organizacionales que permitan experimentar rápido, aprender del error y ajustar el rumbo con frecuencia.
 
+> 🔴 **Comentario (Fredy):** El ejemplo que usa el propio documento para "complejo" (catálogo de imágenes) es justo el mismo componente que en `docs/organizacion-agil.md` y en `Gestión de Imágenes y Trazabilidad` se describe con un flujo lineal de 7 pasos fijo (solicitud → escaneo → firma → publicación). Un flujo de pasos fijo y secuencial es la firma de un problema **complicado**, no complejo — Cynefin dice que lo complejo se resuelve iterando y observando, no siguiendo un pipeline predefinido. O se reclasifica ese componente como "complicado" (razonable, ya que el flujo de imágenes sí es analizable de antemano), o se rediseña el flujo de imágenes para que tenga puntos reales de prueba-observación-ajuste. Tal como está, hay una contradicción entre el marco teórico elegido y la especificación técnica concreta.
+
 Una organización jerárquica clásica —con aprobaciones en cascada y especialización rígida por departamento— es eficiente para lo simple y lo complicado, pero se vuelve lenta y frágil frente a lo complejo: cada cambio de requisito debe atravesar varios niveles de aprobación, y el conocimiento queda fragmentado entre silos que no se comunican con fluidez.
 
 ---
@@ -44,6 +46,8 @@ La agilidad organizacional traslada los principios ágiles —iteración corta, 
 El reto central del diseño organizacional ágil es lograr que los equipos tengan autonomía suficiente para decidir cómo resolver un problema (sin esperar aprobaciones de arriba hacia abajo para cada decisión técnica), y al mismo tiempo mantengan alineación con los objetivos estratégicos de la organización, evitando que cada equipo tome direcciones contradictorias entre sí.
 
 Cuando la autonomía es alta pero la alineación es baja, el resultado es caos: equipos desconectados, duplicación de esfuerzo, inconsistencias. Cuando la alineación es alta pero la autonomía es baja, el resultado es una burocracia lenta que no logra adaptarse a la complejidad del problema. El diseño organizacional ágil busca maximizar ambas dimensiones a la vez.
+
+> 🔴 **Comentario (Fredy):** Esta sección explica bien la teoría (alta autonomía + baja alineación = caos; baja autonomía + alta alineación = burocracia), pero nunca se aplica con un ejemplo numérico o un mecanismo de medición al caso de laboratorios. ¿Cómo sabremos, en la práctica del curso, si un squad se está "desalineando" del resto? El documento no propone ningún indicador (ej. dependencias bloqueadas por semana, conflictos de prioridad escalados al Tribe Lead) — se queda en el nivel conceptual y no baja a métrica operativa.
 
 ---
 
@@ -76,6 +80,8 @@ Es una comunidad de interés informal y voluntaria que cruza toda la organizaci�
 
 *El resultado es una matriz: cada persona pertenece "verticalmente" a un squad (donde entrega valor día a día) y "horizontalmente" a un chapter (donde mantiene su desarrollo técnico), y opcionalmente participa en guilds temáticos.*
 
+> 🔴 **Comentario (Fredy):** El Guild se define aquí con el mismo nivel de detalle que Squad, Tribe y Chapter, y hasta aparece en la tabla resumen de esta sección. Sin embargo, en todo el punto 6 (el caso aplicado: Tribe Platform Lab, squads de Fase 1 y 2, Chapters liderados por docentes) **no se menciona ningún Guild concreto**. Si el modelo se presenta como "cuatro unidades" pero solo se aplican tres al caso real, hay que decidir explícitamente: o se agrega al menos un Guild aplicado (ej. Guild de Seguridad de Imágenes, que conectaría directo con el punto 2.2 de la consigna del curso sobre gobernanza de licencias/trazabilidad), o se aclara en el texto que el Guild queda fuera de alcance en esta primera fase y por qué.
+
 ---
 
 ## 5. Por qué este diseño encaja con problemas complejos
@@ -98,6 +104,8 @@ El proyecto propone una plataforma híbrida (local + nube) que integre gestión 
 ### 6.2 ¿Por qué es un problema complejo (y no solo complicado)?
 
 Aplicando el marco Cynefin al caso: no existe una única arquitectura "correcta" conocida de antemano, porque las necesidades de un aula universitaria (bajo presupuesto, alta rotación de estudiantes) difieren de las de una empresa (seguridad, cumplimiento, SLAs). Los requisitos emergerán con el uso real, hay múltiples interesados con intereses distintos (estudiantes, docentes, administradores de TI, empresas) y la tecnología base (contenedores, Kubernetes, identidad, seguridad) evoluciona constantemente. Esto ubica al proyecto en el dominio complejo de Cynefin: se requiere experimentar con fases piloto, observar el uso real y adaptar el diseño, no un plan cerrado desde el inicio.
+
+> 🔴 **Comentario (Fredy):** Esta misma conclusión ("requiere fases piloto, no un plan cerrado") es contradicha más adelante por la sección 6.6 de este mismo documento, que sí define un plan cerrado con duraciones fijas: Análisis y Diseño (1 mes) → Universitario (4-6 meses) → Empresa (5-7 meses) → Piloto → Mejora continua. Si el piloto está al final de una secuencia larga y no al principio o de forma recurrente, el documento no está aplicando su propio marco Cynefin.
 
 ### 6.3 Aplicación del Modelo Spotify: el Tribe "Platform Lab"
 
@@ -122,6 +130,8 @@ Los Chapters agrupan a los estudiantes por especialidad técnica, transversalmen
 - Chapter Security & Compliance
 - Chapter Frontend & UX
 
+> 🔴 **Comentario (Fredy):** A diferencia de lo que ocurre dos subsecciones después (6.5), aquí, en la lista "oficial" de Chapters, no aparece el Chapter de "Organización y Procesos" que se introduce más adelante. Se recomienda unificar: esta sección 6.4 debería listar los cinco Chapters (incluyendo Organización y Procesos) para que quien lea solo esta parte no se quede con una lista incompleta — que es justo lo que terminó pasando en `docs/organizacion-agil.md`, donde ese Chapter directamente no aparece en ningún lado.
+
 ### 6.5 El dilema organizacional: ¿dónde ubicar la gestión de procesos?
 
 Durante la planificación del backlog surgió una pregunta típica del diseño organizacional ágil: los procesos administrativos del laboratorio (reserva de equipos, aprobación de imágenes, matriz RACI, indicadores de uso) ¿ameritan un squad propio? El equipo del proyecto descartó esa opción porque un squad dedicado solo a procesos generaría un silo desconectado de la ejecución técnica y sería costoso en recursos.
@@ -133,6 +143,9 @@ Esta decisión ilustra en la práctica el principio de autonomía + alineación:
 ### 6.6 Cadencia y artefactos ágiles del proyecto
 
 - Dedicación semanal: 15-20 horas/estudiante en la Fase 1 (Universitaria) y 20-25 horas/estudiante en la Fase 2 (Empresa).
+
+> 🔴 **Comentario (Fredy):** Estas cifras no tienen respaldo (no se citan créditos del curso ni la carga académica típica de un estudiante de EPIS, que lleva en promedio 5-6 cursos por semestre). Dedicar 15-20h extra *solo* a este proyecto implicaría más horas que todas las demás materias juntas. Como este documento es la fuente original de donde `plan-dedicacion.md` copia el mismo número, el problema de origen está aquí.
+
 - Ritmo de coordinación: 2 reuniones de squad y 1 revisión con el Chapter (docente) por semana.
 - Backlog priorizado con MoSCoW (Must/Should/Could/Won't have), organizado en épicas: Organización y Procesos, Usuarios y Permisos, Catálogo de Imágenes, Hardware e Inventario, Frontend, Arquitectura base.
 - Fases de implementación: Análisis y Diseño (1 mes) → Proyecto Universitario (4-6 meses) → Evolución a Proyecto Empresa (5-7 meses) → Piloto → Mejora continua.
@@ -160,3 +173,7 @@ El caso de la Plataforma Híbrida de Gestión de Laboratorios muestra que Organi
 2. Si el proyecto creciera a 10 squads, ¿en qué punto convendría dividir el Tribe "Platform Lab" en dos tribes independientes?
 3. ¿Qué riesgos organizacionales aparecen si el rol de Process Owner dentro de cada squad no tiene tiempo protegido para documentar procesos?
 4. ¿Cómo mediría usted, con indicadores concretos, si el modelo está logrando el equilibrio entre autonomía y alineación?
+
+---
+
+> 🔴 **Comentario general (Fredy):** El documento es sólido como marco teórico (Cynefin, autonomía/alineación, Modelo Spotify) y tiene el mérito de resolver bien en 6.5 el dilema de dónde ubicar la gestión de procesos. El problema principal es que varias piezas del propio documento no dialogan entre sí: dice que el proyecto es "complejo" pero luego define un cronograma cerrado (6.6), define Guild como una de las cuatro unidades pero no lo aplica al caso (6.3-6.6), y menciona el Chapter de Organización y Procesos en 6.5 pero no lo incluye en la lista "oficial" de Chapters de 6.4. Recomiendo, para el documento de propuestas del punto 2.1 que pide el curso, tomar precisamente estas tres inconsistencias como base.

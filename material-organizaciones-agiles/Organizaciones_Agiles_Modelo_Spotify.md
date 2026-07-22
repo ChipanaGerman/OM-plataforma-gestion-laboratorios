@@ -60,6 +60,8 @@ La mayoría de los proyectos tecnológicos actuales se desenvuelven en un entorn
 | **Complejo** | La causa-efecto solo se entiende en retrospectiva. Requiere probar–sentir–responder. | Diseñar un catálogo de imágenes para públicos distintos. |
 | **Caótico** | No hay relación causa-efecto discernible; se debe actuar primero para estabilizar. | Caída total del laboratorio en plena evaluación. |
 
+> 🔴 **Comentario (Fredy):** Este ejemplo de "complejo" no coincide textualmente con el mismo ejemplo en `Organizaciones_Agiles_Caso_Laboratorios.md` ("diseñar un catálogo de imágenes de contenedores que satisfaga a la vez a estudiantes, docentes y empresas"). Son dos redacciones distintas del mismo caso repetidas en dos archivos del mismo material. Si en el futuro se actualiza el ejemplo en un archivo y no en el otro, quedan desincronizados — el mismo riesgo de duplicación (DRY) que ya se marcó para los dos README del repo raíz.
+
 ---
 
 ## Los problemas complejos no se resuelven planificando más
@@ -118,6 +120,8 @@ Unidad básica: equipo pequeño, multidisciplinario (5–9 personas) y autónomo
 - Mínima dependencia de otros equipos
 - Decide su propia forma de trabajo (Scrum, Kanban, híbrido)
 
+> 🔴 **Comentario (Fredy):** Esta afirmación contradice la sección de Cadencia del propio material (`Caso_Laboratorios.md` 6.6): "2 reuniones de squad y 1 revisión con el Chapter por semana" es una cadencia fija impuesta a todos los squads por igual, no una decisión autónoma de cada equipo. Si de verdad se quiere que el squad "decida su propia forma de trabajo", ese número de reuniones debería ser un mínimo sugerido, no una regla uniforme — tal como está escrito, es alineación disfrazada de autonomía.
+
 ---
 
 ## Tribe
@@ -128,6 +132,8 @@ Agrupa varios squads que trabajan en un área de producto relacionada. Coordina 
 - Alinea prioridades entre squads relacionados
 - Gestiona dependencias técnicas compartidas
 - Tiene un líder de tribu que facilita, no ordena
+
+> 🔴 **Comentario (Fredy):** Este slide exige un Tribe Lead con rol de facilitador, pero ni aquí ni en `docs/organizacion-agil.md` se nombra quién ocupa ese rol en el caso real (¿un docente coordinador del curso, un estudiante?). Aquí queda aún más explícito que el propio material teórico sí exige ese rol, así que su ausencia en el documento aplicado es una omisión, no una opción de diseño.
 
 ---
 
@@ -140,6 +146,8 @@ Agrupación transversal de personas que comparten una misma disciplina o especia
 - Desarrollo profesional y mentoría
 - No decide el día a día del squad
 
+> 🔴 **Comentario (Fredy):** Esta premisa viene del contexto corporativo original de Spotify, donde el Chapter Lead es un par técnico sin poder jerárquico real sobre el squad. Pero en este caso el Chapter Lead es un **profesor que evalúa la nota del curso**. Un profesor que califica sí tiene, de facto, poder sobre el día a día del squad (puede condicionar el avance a que se sigan sus indicaciones técnicas). El material debería reconocer esta diferencia de poder en vez de copiar sin ajuste la premisa de "no decide el día a día", porque en un entorno académico esa independencia no es real de la misma forma que en una empresa.
+
 ---
 
 ## Guild
@@ -150,6 +158,8 @@ Comunidad informal y voluntaria que cruza toda la organización, abierta a cualq
 - Comparte conocimiento de forma orgánica
 - Participación voluntaria, sin jerarquía formal
 - Ejemplos: guild de seguridad, guild de accesibilidad
+
+> 🔴 **Comentario (Fredy):** El material menciona "guild de accesibilidad" como ejemplo genérico, pero nunca se retoma esta idea aplicada al caso — y es una omisión relevante: una plataforma de laboratorios que va a ser usada por toda la población estudiantil debería considerar accesibilidad (lectores de pantalla, navegación por teclado en el catálogo de imágenes, contraste de la interfaz). Este es un ejemplo concreto de cómo el Guild podría aplicarse al caso real y no quedar solo como definición teórica.
 
 ---
 
@@ -162,6 +172,8 @@ Cada persona pertenece "verticalmente" a un squad (entrega valor día a día) y 
 | **Backend** | 👤 | 👤 | 👤 | 👤 |
 | **DevOps** | 👤 | 👤 | 👤 | 👤 |
 | **Frontend** | 👤 | 👤 | 👤 | 👤 |
+
+> 🔴 **Comentario (Fredy):** Esta tabla usa nombres genéricos ("Squad A, B, C, D") en vez de los nombres reales ya definidos en el mismo material (Core Platform, Image & Container Management, etc.). Para un material didáctico que se supone acompaña un caso aplicado, sería más útil que la matriz mostrara los squads reales del proyecto — así el estudiante puede visualizar exactamente en qué squad y qué chapter caería si se uniera al proyecto, en vez de un ejemplo abstracto desconectado del caso.
 
 ---
 
@@ -176,6 +188,8 @@ Cada persona pertenece "verticalmente" a un squad (entrega valor día a día) y 
 - Squads sin chapter fuerte pierden estándares comunes
 - Exceso de autonomía sin alineación genera duplicación
 - Requiere líderes de squad/tribe con habilidades de facilitación
+
+> 🔴 **Comentario (Fredy):** Esta lista de riesgos es genérica y no incluye el riesgo más específico y probable del caso real: al ser un proyecto de curso semestral, hay alta rotación de estudiantes cada semestre. Un riesgo propio de este contexto —y no del modelo Spotify en general— es que el Chapter pierda continuidad de estándares si el profesor cambia de curso a curso, o que un squad completo "desaparezca" al terminar el semestre sin transferir conocimiento al siguiente grupo. Ese riesgo, específico del entorno académico, no aparece en ningún lado del material.
 
 ---
 
@@ -308,3 +322,7 @@ El caso de la Plataforma Híbrida de Gestión de Laboratorios muestra que O&M, a
 2. Si el proyecto creciera a 10 squads, ¿en qué punto convendría dividir el Tribe "Platform Lab" en dos tribes independientes?
 3. ¿Qué riesgos aparecen si el Process Owner de cada squad no tiene tiempo protegido para documentar procesos?
 4. ¿Cómo mediría, con indicadores concretos, si el modelo logra el equilibrio entre autonomía y alineación?
+
+---
+
+> 🔴 **Comentario general (Fredy):** Este archivo repite casi al pie de la letra la estructura organizacional, cadencia y ejemplos de `Organizaciones_Agiles_Caso_Laboratorios.md` — la misma información vive ahora en tres lugares (este slide, el documento de caso, y `docs/organizacion-agil.md`), cada uno con pequeñas variaciones de redacción. Además de los vacíos ya señalados (Tribe Lead, Chapter de Organización y Procesos, Guild aplicado), este archivo en particular introduce una contradicción propia entre "el squad decide su forma de trabajo" y la cadencia fija impuesta a todos, y no reconoce que un Chapter Lead que es a la vez el profesor evaluador no es neutral de la misma forma que en el modelo Spotify corporativo original.
